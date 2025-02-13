@@ -1,0 +1,16 @@
+DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE
+);
+
+DROP TABLE IF EXISTS assignment;
+CREATE TABLE assignment (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    submitted_by BIGINT,
+    submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (submitted_by) REFERENCES Student(id) ON DELETE CASCADE
+);
